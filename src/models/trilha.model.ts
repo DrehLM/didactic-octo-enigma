@@ -30,7 +30,6 @@ export default function (app: Application): typeof Model {
     trilha.belongsToMany(models.edicao, {
       as: 'edicoes',
       through: 'edicaoTrilha',
-      foreignKey: 'edicaoId',
     });
     trilha.hasMany(models.edicaoTrilha, {
       as: 'edicoesTrilhas',

@@ -21,6 +21,7 @@ export default function (app: Application): typeof Model {
       },
     },
     {
+      tableName: 'edicao_trilha',
       hooks: {
         beforeCount(options: any): HookReturn {
           options.raw = true;
@@ -33,11 +34,11 @@ export default function (app: Application): typeof Model {
   (edicaoTrilha as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    edicaoTrilha.hasMany(models.edicao, {
+    edicaoTrilha.belongsTo(models.edicao, {
       as: 'edicoes',
       foreignKey: 'edicaoId',
     });
-    edicaoTrilha.hasMany(models.trilha, {
+    edicaoTrilha.belongsTo(models.trilha, {
       as: 'trilhas',
       foreignKey: 'trilhaId',
     });
