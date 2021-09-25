@@ -53,6 +53,10 @@ export default function (app: Application): typeof Model {
       as: 'edicoesTrilhas',
       foreignKey: 'edicaoId',
     });
+    edicao.hasMany(models.publicacao, {
+      as: 'publicacoes',
+      foreignKey: 'edicaoId',
+    });
   };
 
   return edicao;

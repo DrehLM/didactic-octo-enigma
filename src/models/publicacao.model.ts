@@ -6,12 +6,18 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const trilha = sequelizeClient.define(
-    'trilha',
+  const publicacao = sequelizeClient.define(
+    'publicacao',
     {
-      trilha: {
+      titulo: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      edicaoId: {
+        type: DataTypes.INTEGER,
+      },
+      trilhaId: {
+        type: DataTypes.INTEGER,
       },
     },
     {
@@ -23,23 +29,18 @@ export default function (app: Application): typeof Model {
     }
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (trilha as any).associate = function (
+  (publicacao as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    trilha.belongsToMany(models.edicao, {
-      as: 'edicoes',
-      through: 'edicaoTrilha',
+    publicacao.belongsTo(models.edicao, {
+      as: 'edicao',
+      foreignKey: 'edicaoId',
     });
-    trilha.hasMany(models.edicaoTrilha, {
-      as: 'edicoesTrilhas',
-      foreignKey: 'trilhaId',
-    });
-    trilha.hasMany(models.publicacao, {
-      as: 'publicacoes',
+    publicacao.belongsTo(models.trilha, {
+      as: 'trilha',
       foreignKey: 'trilhaId',
     });
   };
 
-  return trilha;
+  return publicacao;
 }
