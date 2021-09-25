@@ -40,10 +40,17 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (instituicao as any).associate = function (models: typeof sequelizeClient.models): void {
-
-    instituicao.hasMany(models.edicao, { as: 'edicoes', foreignKey: 'instituicaoId' });
-
+  (instituicao as any).associate = function (
+    models: typeof sequelizeClient.models
+  ): void {
+    instituicao.hasMany(models.edicao, {
+      as: 'edicoes',
+      foreignKey: 'instituicaoId',
+    });
+    instituicao.hasMany(models.escrita, {
+      as: 'escritas',
+      foreignKey: 'instituicaoId',
+    });
   };
 
   return instituicao;
