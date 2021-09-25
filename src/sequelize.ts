@@ -9,6 +9,7 @@ export default function (app: Application): void {
     define: {
       freezeTableName: true,
       timestamps: false,
+      underscored: true
     }
   });
   const oldSetup = app.setup;
