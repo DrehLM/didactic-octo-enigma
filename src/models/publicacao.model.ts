@@ -13,6 +13,9 @@ export default function (app: Application): typeof Model {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      edicaoId: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       hooks: {
@@ -23,10 +26,13 @@ export default function (app: Application): typeof Model {
     }
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (publicacao as any).associate = function (models: any): void {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  (publicacao as any).associate = function (
+    models: typeof sequelizeClient.models
+  ): void {
+    publicacao.belongsTo(models.edicao, {
+      as: 'edicao',
+      foreignKey: 'edicaoId',
+    });
   };
 
   return publicacao;
