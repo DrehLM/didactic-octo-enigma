@@ -25,8 +25,9 @@ export default function (app: Application): typeof Model {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (evento as any).associate = function (models: any): void {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    evento.hasMany(models.edicao, { as: 'edicoes', foreignKey: 'eventoId' });
+
   };
 
   return evento;

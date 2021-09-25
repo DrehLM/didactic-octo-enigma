@@ -36,9 +36,10 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (instituicao as any).associate = function (models: any): void {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  (instituicao as any).associate = function (models: typeof sequelizeClient.models): void {
+
+    instituicao.hasMany(models.edicao, { as: 'edicoes', foreignKey: 'instituicaoId' });
+
   };
 
   return instituicao;
