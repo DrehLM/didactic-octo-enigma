@@ -12,6 +12,7 @@ export default function (app: Application): typeof Model {
       allowNull: false
     }
   }, {
+    tableName: 'palavra_chave',
     hooks: {
       beforeCount(options: any): HookReturn {
         options.raw = true;
