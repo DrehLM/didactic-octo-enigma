@@ -52,6 +52,10 @@ export default function (app: Application): typeof Model {
       as: 'publicacoesPalavrasChave',
       foreignKey: 'publicacaoId'
     });
+    publicacao.belongsToMany(models.palavraChave, {
+      as: 'palavrasChaves',
+      through: 'publicacaoPalavraChave'
+    });
   };
 
   return publicacao;

@@ -13,6 +13,10 @@ export default function (app: Application): typeof Model {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      sigla: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       cidade: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -22,8 +22,14 @@ export default function (app: Application): typeof Model {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (palavraChave as any).associate = function (models: any): void {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    palavraChave.hasMany(models.publicacaoPalavraChave, {
+      as: 'publicacoesPalavrasChave',
+      foreignKey: 'palavraChaveId',
+    });
+    palavraChave.belongsToMany(models.publicacao, {
+      as: 'publicacoes',
+      through: 'publicacaoPalavraChave',
+    });
   };
 
   return palavraChave;
