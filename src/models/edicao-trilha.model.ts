@@ -6,22 +6,18 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const edicao = sequelizeClient.define(
-    'edicao',
+  const edicaoTrilha = sequelizeClient.define(
+    'edicaoTrilha',
     {
-      edicao: {
-        type: DataTypes.STRING,
+      edicaoId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
         allowNull: false,
       },
-      ano: {
+      trilhaId: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
         allowNull: false,
-      },
-      eventoId: {
-        type: DataTypes.INTEGER,
-      },
-      instituicaoId: {
-        type: DataTypes.INTEGER,
       },
     },
     {
@@ -34,27 +30,18 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (edicao as any).associate = function (
+  (edicaoTrilha as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    edicao.belongsTo(models.instituicao, {
-      as: 'instituicao',
-      foreignKey: 'instituicaoId',
-    });
-    edicao.belongsTo(models.evento, {
-      as: 'evento',
-      foreignKey: 'eventoId',
-    });
-    edicao.belongsToMany(models.trilha, {
-      as: 'trilhas',
-      through: 'edicao_trilha',
-      foreignKey: 'trilhaId',
-    });
-    edicao.hasMany(models.edicaoTrilha, {
-      as: 'edicoesTrilhas',
+    edicaoTrilha.hasMany(models.edicao, {
+      as: 'edicoes',
       foreignKey: 'edicaoId',
+    });
+    edicaoTrilha.hasMany(models.trilha, {
+      as: 'trilhas',
+      foreignKey: 'trilhaId',
     });
   };
 
-  return edicao;
+  return edicaoTrilha;
 }
