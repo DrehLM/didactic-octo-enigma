@@ -29,7 +29,7 @@ export default function (app: Application): typeof Model {
   ): void {
     trilha.belongsToMany(models.edicao, {
       as: 'edicoes',
-      through: 'edicao_trilha',
+      through: 'edicaoTrilha',
       foreignKey: 'edicaoId',
     });
     trilha.hasMany(models.edicaoTrilha, {
