@@ -42,15 +42,24 @@ export default function (app: Application): typeof Model {
     });
     publicacao.hasMany(models.publicacaoTag, {
       as: 'publicacoesTags',
-      foreignKey: 'publicacaoId'
+      foreignKey: 'publicacaoId',
     });
     publicacao.belongsToMany(models.tag, {
       as: 'tags',
-      through: 'publicacaoTag'
+      through: 'publicacaoTag',
     });
     publicacao.hasMany(models.publicacaoPalavraChave, {
       as: 'publicacoesPalavrasChave',
-      foreignKey: 'publicacaoId'
+      foreignKey: 'publicacaoId',
+    });
+    publicacao.belongsToMany(models.autor, {
+      as: 'autores',
+      through: 'escrita',
+      foreignKey: 'publicacaoId',
+    });
+    publicacao.hasMany(models.escrita, {
+      as: 'escritas',
+      foreignKey: 'publicacaoId',
     });
   };
 

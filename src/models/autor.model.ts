@@ -36,6 +36,15 @@ export default function (app: Application): typeof Model {
       as: 'academico',
       foreignKey: 'academicoId',
     });
+    autor.belongsToMany(models.publicacao, {
+      as: 'publicacoes',
+      through: 'escrita',
+      foreignKey: 'autorId',
+    });
+    autor.hasMany(models.escrita, {
+      as: 'escritas',
+      foreignKey: 'autorId',
+    });
   };
 
   return autor;

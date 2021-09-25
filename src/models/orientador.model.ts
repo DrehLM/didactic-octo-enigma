@@ -36,6 +36,10 @@ export default function (app: Application): typeof Model {
       as: 'academico',
       foreignKey: 'academicoId',
     });
+    orientador.hasMany(models.escrita, {
+      as: 'escritas',
+      foreignKey: 'orientadorId',
+    });
   };
 
   return orientador;
