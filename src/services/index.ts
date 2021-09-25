@@ -1,5 +1,6 @@
 import { Application } from '../declarations';
 import eventos from './eventos/eventos.service';
+import instituicoes from './instituicoes/instituicoes.service';
 import academicos from './academicos/academicos.service';
 import autores from './autores/autores.service';
 import orientadores from './orientadores/orientadores.service';
@@ -7,6 +8,7 @@ import orientadores from './orientadores/orientadores.service';
 
 export default function (app: Application): void {
   app.configure(eventos);
+  app.configure(instituicoes);
   app.configure(academicos);
   app.configure(autores);
   app.configure(orientadores);
