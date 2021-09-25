@@ -8,7 +8,7 @@ import edicoes from './edicoes/edicoes.service';
 import trilhas from './trilhas/trilhas.service';
 import edicoesTrilhas from './edicoes-trilhas/edicoes-trilhas.service';
 import tags from './tags/tags.service';
-import palavraschave from './palavraschave/palavraschave.service';
+import palavrasChave from './palavras-chave/palavras-chave.service';
 import publicacoes from './publicacoes/publicacoes.service';
 import publicacoesTags from './publicacoes-tags/publicacoes-tags.service';
 import publicacoesPalavrasChave from './publicacoes-palavras-chave/publicacoes-palavras-chave.service';
@@ -24,7 +24,7 @@ export default function (app: Application): void {
   app.configure(trilhas);
   app.configure(edicoesTrilhas);
   app.configure(tags);
-  app.configure(palavraschave);
+  app.configure(palavrasChave);
   app.configure(publicacoes);
   app.configure(publicacoesTags);
   app.configure(publicacoesPalavrasChave);
