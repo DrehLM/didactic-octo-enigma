@@ -49,7 +49,7 @@ export default function (app: Application): typeof Model {
       through: 'publicacaoTag'
     });
     publicacao.hasMany(models.publicacoesPalavraschave, {
-      as: 'publicacoesTags',
+      as: 'publicacoesPalavraschave',
       foreignKey: 'publicacaoId'
     });
   };
