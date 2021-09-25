@@ -2,7 +2,7 @@
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
 import { Palavraschave } from './palavraschave.class';
-import createModel from '../../models/palavrachave';
+import createModel from '../../models/palavrachave.model';
 import hooks from './palavraschave.hooks';
 
 // Add this service to the service type index
