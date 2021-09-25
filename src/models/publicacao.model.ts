@@ -16,6 +16,9 @@ export default function (app: Application): typeof Model {
       edicaoId: {
         type: DataTypes.INTEGER,
       },
+      trilhaId: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       hooks: {
@@ -32,6 +35,10 @@ export default function (app: Application): typeof Model {
     publicacao.belongsTo(models.edicao, {
       as: 'edicao',
       foreignKey: 'edicaoId',
+    });
+    publicacao.belongsTo(models.trilha, {
+      as: 'trilha',
+      foreignKey: 'trilhaId',
     });
   };
 

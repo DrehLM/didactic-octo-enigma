@@ -35,6 +35,10 @@ export default function (app: Application): typeof Model {
       as: 'edicoesTrilhas',
       foreignKey: 'trilhaId',
     });
+    trilha.hasMany(models.publicacao, {
+      as: 'publicacoes',
+      foreignKey: 'trilhaId',
+    });
   };
 
   return trilha;
