@@ -1,3 +1,4 @@
+
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
 import { Sequelize, DataTypes, Model } from 'sequelize';
@@ -6,12 +7,19 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const tag = sequelizeClient.define('tag', {
-    tag: {
-      type: DataTypes.STRING,
+  const publicacaoTag = sequelizeClient.define('publicacaoTag', {
+    publicacaoId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false
+    },
+    tagId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
     }
   }, {
+    tableName: 'publicacao_tag',
     hooks: {
       beforeCount(options: any): HookReturn {
         options.raw = true;
@@ -20,16 +28,17 @@ export default function (app: Application): typeof Model {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (tag as any).associate = function (models: any): void {
-    tag.hasMany(models.publicacaoTag, {
-      as: 'publicacoesTags',
-      foreignKey: 'tagId',
-    });
-    tag.belongsToMany(models.publicacao, {
+  (publicacaoTag as any).associate = function (models: typeof sequelizeClient.models
+  ): void {
+    publicacaoTag.belongsTo(models.publicacao, {
       as: 'publicacoes',
-      through: 'publicacaoTag'
+      foreignKey: 'publicacaoId'
+    });
+    publicacaoTag.belongsTo(models.tag, {
+      as: 'tags',
+      foreignKey: 'tagId',
     });
   };
 
-  return tag;
+  return publicacaoTag;
 }

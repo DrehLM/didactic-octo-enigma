@@ -40,6 +40,18 @@ export default function (app: Application): typeof Model {
       as: 'trilha',
       foreignKey: 'trilhaId',
     });
+    publicacao.hasMany(models.publicacaoTag, {
+      as: 'publicacoesTags',
+      foreignKey: 'publicacaoId'
+    });
+    publicacao.belongsToMany(models.tag, {
+      as: 'tags',
+      through: 'publicacaoTag'
+    });
+    publicacao.hasMany(models.publicacoesPalavraschave, {
+      as: 'publicacoesTags',
+      foreignKey: 'publicacaoId'
+    });
   };
 
   return publicacao;

@@ -6,7 +6,7 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const palavraschave = sequelizeClient.define('palavrachave', {
+  const palavrachave = sequelizeClient.define('palavrachave', {
     palavraChave: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,10 +21,10 @@ export default function (app: Application): typeof Model {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (palavraschave as any).associate = function (models: any): void {
+  (palavrachave as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return palavraschave;
+  return palavrachave;
 }

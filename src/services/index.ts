@@ -10,6 +10,8 @@ import edicoesTrilhas from './edicoes-trilhas/edicoes-trilhas.service';
 import tags from './tags/tags.service';
 import palavraschave from './palavraschave/palavraschave.service';
 import publicacoes from './publicacoes/publicacoes.service';
+import publicacoesTags from './publicacoes-tags/publicacoes-tags.service';
+import publicacoesPalavrasChave from './publicacoes-palavras-chave/publicacoes-palavras-chave.service';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 export default function (app: Application): void {
@@ -24,4 +26,6 @@ export default function (app: Application): void {
   app.configure(tags);
   app.configure(palavraschave);
   app.configure(publicacoes);
+  app.configure(publicacoesTags);
+  app.configure(publicacoesPalavrasChave);
 }
