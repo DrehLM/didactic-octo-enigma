@@ -48,8 +48,8 @@ export default function (app: Application): typeof Model {
       as: 'tags',
       through: 'publicacaoTag'
     });
-    publicacao.hasMany(models.publicacoesPalavraschave, {
-      as: 'publicacoesPalavraschave',
+    publicacao.hasMany(models.publicacaoPalavraChave, {
+      as: 'publicacoesPalavrasChave',
       foreignKey: 'publicacaoId'
     });
   };
