@@ -6,8 +6,8 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const orientadores = sequelizeClient.define(
-    'orientadores',
+  const orientador = sequelizeClient.define(
+    'orientador',
     {
       academicoId: {
         type: DataTypes.INTEGER,
@@ -29,14 +29,14 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (orientadores as any).associate = function (
+  (orientador as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    orientadores.belongsTo(models.academicos, {
+    orientador.belongsTo(models.academico, {
       as: 'academico',
       foreignKey: 'academicoId',
     });
   };
 
-  return orientadores;
+  return orientador;
 }

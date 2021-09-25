@@ -2,7 +2,7 @@
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
 import { Orientadores } from './orientadores.class';
-import createModel from '../../models/orientadores.model';
+import createModel from '../../models/orientador.model';
 import hooks from './orientadores.hooks';
 
 // Add this service to the service type index

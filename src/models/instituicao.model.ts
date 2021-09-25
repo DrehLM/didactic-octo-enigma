@@ -6,10 +6,22 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const academicos = sequelizeClient.define(
-    'academicos',
+  const instituicao = sequelizeClient.define(
+    'instituicao',
     {
       nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      cidade: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      estado: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      pais: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -24,18 +36,10 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (academicos as any).associate = function (
-    models: typeof sequelizeClient.models
-  ): void {
-    academicos.hasOne(models.autores, {
-      as: 'autor',
-      foreignKey: 'academicoId',
-    });
-    academicos.hasOne(models.orientadores, {
-      as: 'orientador',
-      foreignKey: 'academicoId',
-    });
+  (instituicao as any).associate = function (models: any): void {
+    // Define associations here
+    // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return academicos;
+  return instituicao;
 }

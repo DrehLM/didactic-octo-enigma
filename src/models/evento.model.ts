@@ -6,24 +6,28 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const eventos = sequelizeClient.define('eventos', {
-    nome: {
-      type: DataTypes.STRING,
-      allowNull: false
+  const evento = sequelizeClient.define(
+    'evento',
+    {
+      nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      hooks: {
+        beforeCount(options: any): HookReturn {
+          options.raw = true;
+        },
+      },
     }
-  }, {
-    hooks: {
-      beforeCount(options: any): HookReturn {
-        options.raw = true;
-      }
-    }
-  });
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (eventos as any).associate = function (models: any): void {
+  (evento as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return eventos;
+  return evento;
 }
