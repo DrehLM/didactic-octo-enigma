@@ -7,10 +7,11 @@ import {
   IconButton,
   ThemeProvider,
   Toolbar,
-  Typography
+  Typography,
 } from '@mui/material';
 import React from 'react';
 import logo from './assets/logo512.png';
+import TagForm from './components/tags/TagForm';
 import { mainTheme } from './styles/MainTheme';
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
             </Grid>
           </Toolbar>
         </AppBar>
+
+        <TagForm />
       </Box>
     </ThemeProvider>
   );
