@@ -5,7 +5,7 @@ import {
   CssBaseline,
   IconButton,
   ThemeProvider,
-  Toolbar
+  Toolbar,
 } from '@mui/material';
 import React from 'react';
 import { mainTheme } from './styles/MainTheme';
