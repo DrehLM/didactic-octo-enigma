@@ -11,7 +11,6 @@ export default function (app: Application): typeof Model {
     {
       titulo: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       edicaoId: {
         type: DataTypes.INTEGER,

@@ -16,7 +16,6 @@ export default function (app: Application): typeof Model {
       },
       genero: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {

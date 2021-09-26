@@ -16,7 +16,6 @@ export default function (app: Application): typeof Model {
       },
       titulacao: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {

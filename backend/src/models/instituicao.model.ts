@@ -11,23 +11,18 @@ export default function (app: Application): typeof Model {
     {
       nome: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       sigla: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       cidade: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       estado: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       pais: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {
