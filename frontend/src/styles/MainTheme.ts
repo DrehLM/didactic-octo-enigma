@@ -1,5 +1,5 @@
-import { createTheme, ThemeOptions } from '@material-ui/core/styles';
-import { ptBR } from '@material-ui/core/locale';
+import { createTheme, ThemeOptions } from '@mui/material';
+import { ptBR } from '@mui/material/locale';
 
 const baseTheme: ThemeOptions = {
     palette: {
