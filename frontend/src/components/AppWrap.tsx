@@ -4,7 +4,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import React from 'react';
 import logo from '../assets/logo512.png';
 
-export function AppBar() {
+export function AppWrap() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MuiAppBar position="fixed">
@@ -49,4 +49,4 @@ export function AppBar() {
   );
 }
 
-export default AppBar;
+export default AppWrap;
