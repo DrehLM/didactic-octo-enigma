@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography
 } from '@mui/material';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -19,9 +19,13 @@ import logo from '../assets/logo512.png';
 
 const drawerWidth = 250;
 
-function AppBar({ onClick }: MuiAppBarProps) {
+interface AppBarProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+function AppBar({ onClick }: AppBarProps) {
   return (
-    <MuiAppBar position="fixed" onClick={onClick}>
+    <MuiAppBar position="fixed">
       <Toolbar>
         <IconButton
           size="large"
@@ -31,6 +35,7 @@ function AppBar({ onClick }: MuiAppBarProps) {
           sx={{
             mr: 2
           }}
+          onClick={onClick}
         >
           <MenuIcon />
         </IconButton>
