@@ -11,7 +11,7 @@ const TagForm = () => {
           alert('foi');
         }}
         render={() => (
-          <form style={{ marginTop: '200px' }}>
+          <form>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <RFFTextField label="Tag" name="tag" />
