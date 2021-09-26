@@ -15,6 +15,25 @@ export default function includeAssociations(): Hook {
         {
           model: models.instituicao,
           as: 'instituicoes',
+          include: [
+            { model: models.edicao, as: 'edicoes' },
+            {
+              model: models.escrita,
+              as: 'escritas',
+              include: [
+                {
+                  model: models.autor,
+                  as: 'autor',
+                  include: [{ model: models.academico, as: 'academico' }],
+                },
+                {
+                  model: models.orientador,
+                  as: 'orientador',
+                  include: [{ model: models.academico, as: 'academico' }],
+                },
+              ],
+            },
+          ],
         },
         {
           model: models.trilha,
@@ -23,6 +42,10 @@ export default function includeAssociations(): Hook {
         {
           model: models.publicacao,
           as: 'publicacoes',
+          include: [
+            { model: models.tag, as: 'tags' },
+            { model: models.palavraChave, as: 'palavrasChaves' },
+          ],
         },
       ],
     };
