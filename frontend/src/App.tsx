@@ -4,22 +4,20 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import AppWrap, { MenuItem } from './components/AppWrap';
-
-import TagForm from './components/tags/TagForm';
-
+import Routes from './components/Routes';
 import { mainTheme } from './styles/MainTheme';
 
 const menuItems: MenuItem[] = [
   {
     label: 'Autores',
     path: '/autores',
-    icon: PersonIcon,
+    icon: PersonIcon
   },
   {
     label: 'Instituições',
     path: '/instituicoes',
-    icon: SchoolIcon,
-  },
+    icon: SchoolIcon
+  }
 ];
 
 function App() {
@@ -29,8 +27,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <AppWrap items={menuItems}>
-            {/* <Routes /> */}
-            <TagForm />
+            <Routes />
           </AppWrap>
         </Switch>
       </BrowserRouter>
