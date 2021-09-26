@@ -1,5 +1,6 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { AppWrap, MenuItem } from './components/AppWrap';
 import { mainTheme } from './styles/MainTheme';
 
@@ -9,7 +10,11 @@ function App() {
   return (
     <ThemeProvider theme={mainTheme}>
       <CssBaseline />
-      <AppWrap items={menuItems} />
+      <BrowserRouter>
+        <Switch>
+          <AppWrap items={menuItems} />
+        </Switch>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

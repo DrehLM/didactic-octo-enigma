@@ -13,6 +13,7 @@ import {
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import logo from '../assets/logo512.png';
 
 const drawerWidth = 250;
@@ -71,10 +72,15 @@ interface MenuItemsProps {
 }
 
 function MenuItems({ items }: MenuItemsProps) {
+  const history = useHistory();
   return (
     <List>
       {items.map((item) => (
-        <ListItem key={item.path} button>
+        <ListItem
+          key={item.path}
+          button
+          onClick={() => history.push(item.path)}
+        >
           {item.icon && (
             <ListItemIcon>
               <item.icon />
