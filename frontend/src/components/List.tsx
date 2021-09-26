@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import React from 'react';
 
@@ -13,7 +13,7 @@ export function List<T, S = T>({
   title,
   items,
   formatItem,
-  columns
+  columns,
 }: ListProps<T, S>) {
   const rows = formatItem ? items.map((item) => formatItem(item)) : items;
   return (
@@ -22,19 +22,16 @@ export function List<T, S = T>({
         height: '60vh',
         width: '50vw',
         m: 'auto',
-        p: 4
+        p: 4,
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h4">{title}</Typography>
-        </Grid>
         <Grid item xs={12}>
           <Box
             sx={{
               height: '60vh',
               width: '50vw',
-              m: 'auto'
+              m: 'auto',
             }}
           >
             <DataGrid rows={rows} columns={columns} checkboxSelection />
