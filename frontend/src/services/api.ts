@@ -6,7 +6,17 @@ export const api = create({
 
 export const createService = <T>(path: string) => {
   const find = async (query: T) => {
-    const response = await api.get<Paginated<T>>(path, query);
+    const response = await api.get<Paginated<T> | T[]>(path, query);
+
+    if (response.ok) {
+      return response.data!;
+    } else {
+      throw new Error(response.originalError.message);
+    }
+  };
+
+  const findById = async (id: number): Promise<T> => {
+    const response = await api.get<T>(`${path}/${id}`);
 
     if (response.ok) {
       return response.data!;
@@ -47,6 +57,7 @@ export const createService = <T>(path: string) => {
 
   return {
     find,
+    findById,
     create,
     remove,
     update,
