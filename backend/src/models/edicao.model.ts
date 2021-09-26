@@ -20,9 +20,7 @@ export default function (app: Application): typeof Model {
       },
       eventoId: {
         type: DataTypes.INTEGER,
-      },
-      instituicaoId: {
-        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
