@@ -1,15 +1,16 @@
 // Application hooks that run for every service
+import { disablePagination } from 'feathers-hooks-common';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 export default {
   before: {
     all: [],
-    find: [],
+    find: [disablePagination()],
     get: [],
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   after: {
@@ -19,7 +20,7 @@ export default {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -29,6 +30,6 @@ export default {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };
