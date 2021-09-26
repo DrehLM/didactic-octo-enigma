@@ -123,7 +123,7 @@ interface AppWrapProps {
 }
 
 export function AppWrap({ items, children }: AppWrapProps) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar onClick={() => setOpen(true)} />
