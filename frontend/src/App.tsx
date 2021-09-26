@@ -7,7 +7,7 @@ import {
   IconButton,
   ThemeProvider,
   Toolbar,
-  Typography,
+  Typography
 } from '@mui/material';
 import React from 'react';
 import logo from './assets/logo512.png';
@@ -30,8 +30,10 @@ function App() {
               <MenuIcon />
             </IconButton>
             <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <img src={logo} alt="Octoper Logo" height="40vh" />
+              <Grid item justifyContent="center">
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <img src={logo} alt="Octoper Logo" height="35vh" />
+                </Box>
               </Grid>
               <Grid item>
                 <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
