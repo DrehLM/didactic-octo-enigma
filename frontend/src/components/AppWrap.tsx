@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  styled,
   Toolbar,
   Typography
 } from '@mui/material';
@@ -108,16 +109,23 @@ function Drawer({ open, onClose, items }: DrawerProps) {
   );
 }
 
+const AppBarHeader = styled('div')(({ theme }) => ({
+  ...theme.mixins.toolbar
+}));
+
 interface AppWrapProps {
   items: MenuItem[];
+  children?: React.ReactNode;
 }
 
-export function AppWrap({ items }: AppWrapProps) {
+export function AppWrap({ items, children }: AppWrapProps) {
   const [open, setOpen] = useState(true);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar onClick={() => setOpen(true)} />
       <Drawer open={open} onClose={() => setOpen(false)} items={items} />
+      <AppBarHeader />
+      <main>{children}</main>
     </Box>
   );
 }
