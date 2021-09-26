@@ -1,6 +1,5 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { AppBar, CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
-import { AppBar } from './components/AppBar';
 import { mainTheme } from './styles/MainTheme';
 
 function App() {
