@@ -11,3 +11,16 @@ type Tag = {
   id?: number;
   tag: string;
 };
+
+type PalavraChave = {
+  id?: number;
+  palavraChave: string;
+};
+
+type Instituicao = {
+  id?: number;
+  sigla?: string;
+  cidade?: string;
+  estado?: string;
+  pais?: string;
+};
