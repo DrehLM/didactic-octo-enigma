@@ -11,11 +11,12 @@ export default function (app: Application): typeof Model {
     {
       edicao: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       ano: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+      },
+      modelo: {
+        type: DataTypes.STRING,
       },
       eventoId: {
         type: DataTypes.INTEGER,
