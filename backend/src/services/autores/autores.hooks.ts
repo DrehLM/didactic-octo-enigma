@@ -1,3 +1,4 @@
+import createOrUpdateAcademico from '../../hooks/autores/create-or-update-academico';
 import includeAssociations from '../../hooks/autores/include-associations';
 
 export default {
@@ -5,8 +6,8 @@ export default {
     all: [],
     find: [includeAssociations()],
     get: [includeAssociations()],
-    create: [],
-    update: [],
+    create: [createOrUpdateAcademico()],
+    update: [createOrUpdateAcademico()],
     patch: [],
     remove: [],
   },

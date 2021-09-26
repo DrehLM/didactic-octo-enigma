@@ -1,4 +1,10 @@
-import { Box, Container, Dialog, Typography } from '@mui/material';
+import {
+  Box,
+  Container,
+  Dialog,
+  DialogContent,
+  Typography
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import autoresService from '../services/autores';
 import AddButton from '../components/AddButton';
@@ -18,19 +24,20 @@ const AutoresPage = () => {
   }, []);
 
   return (
-    <Box>
+    <>
       <Container>
         <Box paddingTop="20px">
           <Typography variant="h4">Autores</Typography>
         </Box>
         <AutoresList items={autores} />
       </Container>
-
       <AddButton onClick={() => setOpenForm(true)} />
       <Dialog open={openForm} onClose={() => setOpenForm(false)}>
-        <AutoresForm onCancel={() => setOpenForm(false)} />
+        <DialogContent>
+          <AutoresForm setOpenForm={setOpenForm} />
+        </DialogContent>
       </Dialog>
-    </Box>
+    </>
   );
 };
 
