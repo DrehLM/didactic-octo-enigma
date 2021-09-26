@@ -1,10 +1,8 @@
-import includeAssociations from '../../hooks/escritas/include-associations';
-
 export default {
   before: {
     all: [],
-    find: [includeAssociations()],
-    get: [includeAssociations()],
+    find: [],
+    get: [],
     create: [],
     update: [],
     patch: [],
