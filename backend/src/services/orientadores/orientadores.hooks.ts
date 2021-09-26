@@ -1,13 +1,14 @@
+import includeAssociations from '../../hooks/orientadores/include-associations';
 
 export default {
   before: {
     all: [],
-    find: [],
-    get: [],
+    find: [includeAssociations()],
+    get: [includeAssociations()],
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   after: {
@@ -17,7 +18,7 @@ export default {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -27,6 +28,6 @@ export default {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };
