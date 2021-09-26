@@ -37,9 +37,13 @@ export default function (app: Application): typeof Model {
   (edicao as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    edicao.belongsTo(models.instituicao, {
-      as: 'instituicao',
-      foreignKey: 'instituicaoId',
+    edicao.belongsToMany(models.instituicao, {
+      as: 'instituicoes',
+      through: 'instituicaoEdicao',
+    });
+    edicao.hasMany(models.instituicaoEdicao, {
+      as: 'instituicoesEdicoes',
+      foreignKey: 'edicaoId',
     });
     edicao.belongsTo(models.evento, {
       as: 'evento',

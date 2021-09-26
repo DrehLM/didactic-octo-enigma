@@ -38,8 +38,12 @@ export default function (app: Application): typeof Model {
   (instituicao as any).associate = function (
     models: typeof sequelizeClient.models
   ): void {
-    instituicao.hasMany(models.edicao, {
+    instituicao.belongsToMany(models.edicao, {
       as: 'edicoes',
+      through: 'instituicaoEdicao',
+    });
+    instituicao.hasMany(models.instituicaoEdicao, {
+      as: 'instituicoesEdicoes',
       foreignKey: 'instituicaoId',
     });
     instituicao.hasMany(models.escrita, {
