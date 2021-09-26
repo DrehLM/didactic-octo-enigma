@@ -12,20 +12,27 @@ export default function includeAssociations(): Hook {
       raw: false,
       include: [
         ...(context.params.sequelize?.include ?? []),
-        { model: models.edicao, as: 'edicao' },
-        { model: models.trilha, as: 'trilha' },
-        { model: models.tag, as: 'tags' },
         {
-          model: models.escrita,
-          as: 'escritas',
+          model: models.autor,
+          as: 'autor',
+          include: [{ model: models.academico, as: 'academico' }],
+        },
+        {
+          model: models.orientador,
+          as: 'orientador',
+          include: [{ model: models.academico, as: 'academico' }],
+        },
+        {
+          model: models.publicacao,
+          as: 'publicacao',
           include: [
-            { model: models.autor, as: 'autor' },
-            { model: models.orientador, as: 'orientador' },
-            { model: models.publicacao, as: 'publicacao' },
-            { model: models.instituicao, as: 'instituicao' },
+            { model: models.edicao, as: 'edicao' },
+            { model: models.trilha, as: 'trilha' },
+            { model: models.tag, as: 'tags' },
+            { model: models.palavraChave, as: 'palavrasChaves' },
           ],
         },
-        { model: models.palavraChave, as: 'palavrasChaves' },
+        { model: models.instituicao, as: 'instituicao' },
       ],
     };
 
