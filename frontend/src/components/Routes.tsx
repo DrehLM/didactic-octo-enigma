@@ -5,6 +5,7 @@ export function Routes() {
   return (
     <>
       <Route path="/autores" component={() => <AutoresList />} />
+      <Route path="/intituicoes" component={() => <AutoresList />} />
     </>
   );
 }
