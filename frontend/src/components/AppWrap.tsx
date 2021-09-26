@@ -70,9 +70,10 @@ export interface MenuItem {
 
 interface MenuItemsProps {
   items: MenuItem[];
+  onClick: MuiDrawerProps['onClose'];
 }
 
-function MenuItems({ items }: MenuItemsProps) {
+function MenuItems({ items, onClick }: MenuItemsProps) {
   const history = useHistory();
   return (
     <List>
@@ -80,7 +81,10 @@ function MenuItems({ items }: MenuItemsProps) {
         <ListItem
           key={item.path}
           button
-          onClick={() => history.push(item.path)}
+          onClick={() => {
+            history.push(item.path);
+            onClick && onClick({}, 'backdropClick');
+          }}
         >
           {item.icon && (
             <ListItemIcon>
@@ -103,7 +107,7 @@ function Drawer({ open, onClose, items }: DrawerProps) {
   return (
     <MuiDrawer anchor="left" open={open} onClose={onClose}>
       <Box sx={{ width: drawerWidth }} role="presentation">
-        <MenuItems items={items} />
+        <MenuItems items={items} onClick={onClose} />
       </Box>
     </MuiDrawer>
   );
