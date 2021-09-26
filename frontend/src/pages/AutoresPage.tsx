@@ -1,11 +1,21 @@
 import { Box, Container, Dialog, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import autoresService from '../services/autores';
 import AddButton from '../components/AddButton';
 import AutoresForm from '../components/autores/AutoresForm';
 import AutoresList from '../components/autores/AutoresList';
 
 const AutoresPage = () => {
   const [openForm, setOpenForm] = useState(false);
+  const [autores, setAutores] = useState<Autor[]>([]);
+
+  useEffect(() => {
+    const loadAutores = async () => {
+      const response = await autoresService.find();
+      setAutores(response);
+    };
+    loadAutores();
+  }, []);
 
   return (
     <Box>

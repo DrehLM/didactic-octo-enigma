@@ -5,8 +5,8 @@ export const api = create({
 });
 
 export const createService = <T>(path: string) => {
-  const find = async (query: T) => {
-    const response = await api.get<Paginated<T> | T[]>(path, query);
+  const find = async (query?: T) => {
+    const response = await api.get<T[]>(path, { ...query, $limit: -1 });
 
     if (response.ok) {
       return response.data!;

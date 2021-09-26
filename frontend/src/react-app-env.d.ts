@@ -24,3 +24,12 @@ type Instituicao = {
   estado?: string;
   pais?: string;
 };
+
+type Autor = {
+  academicoId: number;
+  academico: {
+    id: number;
+    nome: string;
+  };
+  genero: string;
+};
