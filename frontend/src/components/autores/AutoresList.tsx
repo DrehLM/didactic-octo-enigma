@@ -2,58 +2,34 @@ import { GridColumns } from '@mui/x-data-grid';
 import React from 'react';
 import { List } from '../List';
 
-interface Autor {
-  academicoId: number;
-  academico: {
-    id: number;
-    nome: string;
-  };
-  genero: string;
+interface AutoresListProps {
+  items: Autor[];
 }
-
-const autores: Autor[] = [
-  {
-    academicoId: 1,
-    academico: {
-      id: 1,
-      nome: 'Gustavinho'
-    },
-    genero: 'so'
-  },
-  {
-    academicoId: 2,
-    academico: {
-      id: 2,
-      nome: 'Ronaldo'
-    },
-    genero: 'sidade'
-  }
-];
 
 const columns: GridColumns = [
   {
     field: 'nome',
-    headerName: 'Nome'
+    headerName: 'Nome',
   },
   {
     field: 'genero',
-    headerName: 'Gênero'
-  }
+    headerName: 'Gênero',
+  },
 ];
 
 const formatItem = (autor: Autor) => {
   return {
     id: autor.academicoId,
     nome: autor.academico.nome,
-    genero: autor.genero
+    genero: autor.genero,
   };
 };
 
-export function AutoresList() {
+export function AutoresList({ items }: AutoresListProps) {
   return (
     <List
       title="Autores"
-      items={autores}
+      items={items}
       formatItem={formatItem}
       columns={columns}
     />

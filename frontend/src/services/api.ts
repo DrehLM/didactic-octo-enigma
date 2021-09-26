@@ -1,7 +1,7 @@
 import { create } from 'apisauce';
 
 export const api = create({
-  baseURL: 'localhost:3030',
+  baseURL: 'http://localhost:3030',
 });
 
 export const createService = <T>(path: string) => {

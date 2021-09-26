@@ -23,7 +23,7 @@ const AutoresPage = () => {
         <Box paddingTop="20px">
           <Typography variant="h4">Autores</Typography>
         </Box>
-        <AutoresList />
+        <AutoresList items={autores} />
       </Container>
 
       <AddButton onClick={() => setOpenForm(true)} />
