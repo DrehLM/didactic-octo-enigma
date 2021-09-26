@@ -1,5 +1,15 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import {
+  Box,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography
+} from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import React, { useState } from 'react';
@@ -50,24 +60,58 @@ function AppBar({ onClick }: MuiAppBarProps) {
   );
 }
 
-interface DrawerProps extends MuiDrawerProps {
-  open: boolean;
+export interface MenuItem {
+  label: string;
+  path: string;
+  icon?: React.ComponentType;
 }
 
-function Drawer({ open, onClose }: DrawerProps) {
+interface MenuItemsProps {
+  items: MenuItem[];
+}
+
+function MenuItems({ items }: MenuItemsProps) {
+  return (
+    <List>
+      {items.map((item) => (
+        <ListItem key={item.path} button>
+          {item.icon && (
+            <ListItemIcon>
+              <item.icon />
+            </ListItemIcon>
+          )}
+          <ListItemText primary={item.label} />
+        </ListItem>
+      ))}
+    </List>
+  );
+}
+
+interface DrawerProps extends MuiDrawerProps {
+  open: boolean;
+  items: MenuItem[];
+}
+
+function Drawer({ open, onClose, items }: DrawerProps) {
   return (
     <MuiDrawer anchor="left" open={open} onClose={onClose}>
-      <Box sx={{ width: drawerWidth }} role="presentation"></Box>
+      <Box sx={{ width: drawerWidth }} role="presentation">
+        <MenuItems items={items} />
+      </Box>
     </MuiDrawer>
   );
 }
 
-export function AppWrap() {
+interface AppWrapProps {
+  items: MenuItem[];
+}
+
+export function AppWrap({ items }: AppWrapProps) {
   const [open, setOpen] = useState(true);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar onClick={() => setOpen(true)} />
-      <Drawer open={open} onClose={() => setOpen(false)} />
+      <Drawer open={open} onClose={() => setOpen(false)} items={items} />
     </Box>
   );
 }
