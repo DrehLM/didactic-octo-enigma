@@ -8,17 +8,18 @@ type Paginated<T> = {
 };
 
 type Tag = {
-  id?: number;
+  id: number;
   tag: string;
 };
 
 type PalavraChave = {
-  id?: number;
+  id: number;
   palavraChave: string;
 };
 
 type Instituicao = {
-  id?: number;
+  id: number;
+  nome?: string;
   sigla?: string;
   cidade?: string;
   estado?: string;
@@ -32,4 +33,9 @@ type Autor = {
     nome: string;
   };
   genero: string;
+};
+
+type Evento = {
+  id: number;
+  nome: string;
 };

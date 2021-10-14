@@ -28,7 +28,6 @@ const formatItem = (autor: Autor) => {
 export function AutoresList({ items }: AutoresListProps) {
   return (
     <List
-      title="Autores"
       items={items}
       formatItem={formatItem}
       columns={columns}

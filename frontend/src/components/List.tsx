@@ -3,7 +3,6 @@ import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import React from 'react';
 
 interface ListProps<Item, FormattedItem = Item> {
-  title: string;
   items: Item[];
   formatItem?: (item: Item) => FormattedItem;
   columns: GridColumns;
