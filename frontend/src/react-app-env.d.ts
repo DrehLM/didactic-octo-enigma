@@ -32,10 +32,18 @@ type Autor = {
     id: number;
     nome: string;
   };
-  genero: string;
+  genero?: string;
 };
 
 type Evento = {
   id: number;
   nome: string;
+};
+
+type Edicao = {
+  id: number;
+  edicao?: string;
+  ano?: number;
+  modelo?: string;
+  eventoId: number;
 };
