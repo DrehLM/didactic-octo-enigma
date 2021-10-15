@@ -12,7 +12,7 @@ export type RFFTextFieldProps<Option, InputValue> = Omit<
   label: string;
   fullWidth: boolean;
   placeholder?: string;
-  parseOption: (value: string | Option | null) => string | InputValue | null;
+  parseOption: (value: Option) => InputValue;
 };
 
 function RFFAutocomplete<Option, InputValue>({
@@ -35,9 +35,13 @@ function RFFAutocomplete<Option, InputValue>({
           options={options}
           onChange={(event, value) => {
             if (Array.isArray(value)) {
-              value.forEach((v) => input.onChange(parseOption(v)));
+              value.forEach((v) =>
+                input.onChange(typeof v === 'string' ? v : parseOption(v))
+              );
+            } else if (typeof value === 'string') {
+              input.onChange(value);
             } else {
-              input.onChange(parseOption(value));
+              input.onChange(value ? parseOption(value) : '');
             }
           }}
           renderInput={(autocompleteProps) => (
@@ -59,7 +63,7 @@ function RFFAutocomplete<Option, InputValue>({
 RFFAutocomplete.defaultProps = {
   fullWidth: false,
   endAdornment: 'disabled',
-  label: ''
+  label: '',
 };
 
 export default RFFAutocomplete;

@@ -1,7 +1,8 @@
 import { Button, Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-final-form';
 import edicoesService from '../../services/edicoes';
+import eventosService from '../../services/eventos';
 import RFFAutocomplete from '../finalFormFields/RFFAutocomplete';
 import RFFTextField from '../finalFormFields/RFFTextField';
 
@@ -9,11 +10,22 @@ interface EdicoesFormProps {
   setOpenForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EventosForm = ({ setOpenForm }: EdicoesFormProps) => {
+const EdicoesForm = ({ setOpenForm }: EdicoesFormProps) => {
+  const [eventos, setEventos] = useState<Evento[]>([]);
+
   const handleSubmit = async (edicao: Edicao) => {
     await edicoesService.create(edicao);
     setOpenForm(false);
   };
+
+  useEffect(() => {
+    const loadEventos = async () => {
+      const eventos = await eventosService.find();
+      setEventos(eventos);
+    };
+    loadEventos();
+  }, []);
+
   return (
     <Form
       onSubmit={handleSubmit}
@@ -33,13 +45,9 @@ const EventosForm = ({ setOpenForm }: EdicoesFormProps) => {
               <RFFAutocomplete
                 label="Evento"
                 name="eventoId"
-                options={[
-                  { id: 1, label: 'Evento 1' },
-                  { id: 2, label: 'Evento 2' }
-                ]}
-                parseOption={(value) =>
-                  typeof value === 'string' ? value : value?.id
-                }
+                options={eventos}
+                getOptionLabel={(evento) => evento.nome}
+                parseOption={(evento) => evento.id}
                 fullWidth
               />
             </Grid>
@@ -66,4 +74,4 @@ const EventosForm = ({ setOpenForm }: EdicoesFormProps) => {
   );
 };
 
-export default EventosForm;
+export default EdicoesForm;
