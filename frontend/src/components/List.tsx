@@ -37,7 +37,13 @@ export function List<Item, FormattedItem = Item>({
               m: 'auto',
             }}
           >
-            <DataGrid rows={rows} columns={columns} checkboxSelection />
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              checkboxSelection
+              disableSelectionOnClick
+              disableColumnMenu
+            />
           </Box>
         </Grid>
       </Grid>
