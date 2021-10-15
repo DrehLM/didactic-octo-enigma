@@ -6,21 +6,26 @@ interface ListProps<Item, FormattedItem = Item> {
   items: Item[];
   formatItem?: (item: Item) => FormattedItem;
   columns: GridColumns;
+  flexColumns?: boolean;
 }
 
 export function List<Item, FormattedItem = Item>({
   items,
   formatItem,
-  columns
+  flexColumns = true,
+  ...props
 }: ListProps<Item, FormattedItem>) {
   const rows = formatItem ? items.map((item) => formatItem(item)) : items;
+  const columns = flexColumns
+    ? props.columns.map((column) => ({ ...column, flex: 1 }))
+    : props.columns;
   return (
     <Box
       sx={{
         height: '60vh',
         width: '50vw',
         m: 'auto',
-        p: 4
+        p: 4,
       }}
     >
       <Grid container spacing={2}>
@@ -29,7 +34,7 @@ export function List<Item, FormattedItem = Item>({
             sx={{
               height: '60vh',
               width: '50vw',
-              m: 'auto'
+              m: 'auto',
             }}
           >
             <DataGrid rows={rows} columns={columns} checkboxSelection />
