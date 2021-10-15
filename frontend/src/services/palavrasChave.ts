@@ -1,3 +1,3 @@
 import { createService } from './api';
 
-export default createService('/palavras-chave');
+export default createService<PalavraChave>('/palavras-chave');

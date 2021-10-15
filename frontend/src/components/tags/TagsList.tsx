@@ -13,10 +13,10 @@ const columns: GridColumns = [
   },
 ];
 
-const formatItem = (publicacao: Tag) => {
+const formatItem = (tag: Tag) => {
   return {
-    id: publicacao.id,
-    tag: publicacao.tag,
+    id: tag.id,
+    tag: tag.tag,
   };
 };
 
