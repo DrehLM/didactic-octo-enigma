@@ -4,6 +4,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import EventIcon from '@mui/icons-material/Event';
 import PushPinIcon from '@mui/icons-material/PushPin';
+import ConstructionIcon from '@mui/icons-material/Construction';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
@@ -16,7 +17,7 @@ const menuItems: MenuItem[] = [
   {
     label: 'Autores',
     path: '/autores',
-    icon: PersonIcon
+    icon: PersonIcon,
   },
   {
     label: 'Eventos',
@@ -31,7 +32,7 @@ const menuItems: MenuItem[] = [
   {
     label: 'Instituições',
     path: '/instituicoes',
-    icon: SchoolIcon
+    icon: SchoolIcon,
   },
   {
     label: 'Publicações',
@@ -47,6 +48,11 @@ const menuItems: MenuItem[] = [
     label: 'Palavras-chave',
     path: '/palavras-chave',
     icon: VpnKeyIcon,
+  },
+  {
+    label: 'Testes',
+    path: '/testes',
+    icon: ConstructionIcon,
   },
 ];
 

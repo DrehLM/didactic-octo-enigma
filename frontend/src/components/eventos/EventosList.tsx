@@ -9,14 +9,14 @@ interface EventosListProps {
 const columns: GridColumns = [
   {
     field: 'nome',
-    headerName: 'Nome'
-  }
+    headerName: 'Nome',
+  },
 ];
 
 const formatItem = (evento: Evento) => {
   return {
     id: evento.id,
-    nome: evento.nome
+    nome: evento.nome,
   };
 };
 
