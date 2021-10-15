@@ -9,12 +9,12 @@ import {
   ListItemText,
   styled,
   Toolbar,
-  Typography
+  Typography,
 } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../assets/logo512.png';
 
 const drawerWidth = 250;
@@ -33,35 +33,37 @@ function AppBar({ onClick }: AppBarProps) {
           color="inherit"
           aria-label="menu"
           sx={{
-            mr: 2
+            mr: 2,
           }}
           onClick={onClick}
         >
           <MenuIcon />
         </IconButton>
-        <Grid container alignItems="center" spacing={1}>
-          <Grid item justifyContent="center">
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center'
-              }}
-            >
-              <img src={logo} alt="Octoper Logo" height="35vh" />
-            </Box>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Grid container alignItems="center" spacing={1}>
+            <Grid item justifyContent="center">
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <img src={logo} alt="Octoper Logo" height="35vh" />
+              </Box>
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                Octoper
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{
-                flexGrow: 1
-              }}
-            >
-              Octoper
-            </Typography>
-          </Grid>
-        </Grid>
+        </Link>
       </Toolbar>
     </MuiAppBar>
   );
@@ -119,7 +121,7 @@ function Drawer({ open, onClose, items }: DrawerProps) {
 }
 
 const AppBarHeader = styled('div')(({ theme }) => ({
-  ...theme.mixins.toolbar
+  ...theme.mixins.toolbar,
 }));
 
 interface AppWrapProps {

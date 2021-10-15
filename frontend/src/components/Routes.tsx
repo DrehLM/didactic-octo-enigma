@@ -15,6 +15,7 @@ export function Routes() {
       <Route path="/testes" component={() => <TestesPage />} />
       <Route path="/instituicoes" component={() => <InstituicoesPage />} />
       <Route path="/publicacoes" component={() => <PublicacoesPage />} />
+      <Route exact path="/" component={() => <TestesPage />} />
     </>
   );
 }
