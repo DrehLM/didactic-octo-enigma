@@ -4,6 +4,7 @@ import EdicoesPage from '../pages/EdicoesPage';
 import EventosPage from '../pages/EventosPage';
 import InstituicoesPage from '../pages/InstituicoesPage';
 import PublicacoesPage from '../pages/PublicacoesPage';
+import TagsPage from '../pages/TagsPage';
 import TestesPage from '../pages/TestesPage';
 
 export function Routes() {
@@ -15,6 +16,7 @@ export function Routes() {
       <Route path="/testes" component={() => <TestesPage />} />
       <Route path="/instituicoes" component={() => <InstituicoesPage />} />
       <Route path="/publicacoes" component={() => <PublicacoesPage />} />
+      <Route path="/tags" component={() => <TagsPage />} />
       <Route exact path="/" component={() => <TestesPage />} />
     </>
   );

@@ -1,3 +1,3 @@
 import { createService } from './api';
 
-export default createService('/tags');
+export default createService<Tag>('/tags');
