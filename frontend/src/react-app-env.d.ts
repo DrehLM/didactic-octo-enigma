@@ -47,3 +47,15 @@ type Edicao = {
   modelo?: string;
   eventoId: number;
 };
+
+type Publicacao = {
+  id: number;
+  titulo?: string;
+  edicaoId?: number;
+  trilhaId?: number;
+};
+
+type Trilha = {
+  id: number;
+  trilha: string;
+};
