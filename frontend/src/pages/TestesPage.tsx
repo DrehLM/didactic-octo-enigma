@@ -28,10 +28,18 @@ const TestesPage = () => {
             <Grid item xs={3}>
               <Paper elevation={4}>
                 <Box
-                  height="200px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
+                  sx={{
+                    height: '200px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'background.paper',
+                    cursor: 'pointer',
+                    transition: '0.3s',
+                    ':hover': {
+                      backgroundColor: '#f0f0f0',
+                    },
+                  }}
                 >
                   <Typography variant="h6">{evento.nome}</Typography>
                 </Box>
@@ -42,11 +50,19 @@ const TestesPage = () => {
           <Grid item xs={3}>
             <Paper elevation={4}>
               <Box
-                height="200px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                fontSize={50}
+                sx={{
+                  height: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: 'background.paper',
+                  cursor: 'pointer',
+                  transition: '0.3s',
+                  fontSize: 50,
+                  ':hover': {
+                    color: 'primary.main',
+                  },
+                }}
               >
                 <AddIcon fontSize="inherit" />
               </Box>

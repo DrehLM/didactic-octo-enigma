@@ -1,4 +1,4 @@
-import { createTheme, ThemeOptions } from '@mui/material';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 import { ptBR } from '@mui/material/locale';
 
 const baseTheme: ThemeOptions = {
@@ -29,7 +29,7 @@ const baseTheme: ThemeOptions = {
 const buildTheme = (themeOptions: ThemeOptions) => {
   const newTheme = { ...themeOptions };
   newTheme.palette = newTheme.palette || {};
-  return createTheme(themeOptions, ptBR);
+  return createTheme(newTheme, ptBR);
 };
 
 export const mainTheme = buildTheme(baseTheme);

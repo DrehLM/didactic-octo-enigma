@@ -6,12 +6,13 @@ import EventIcon from '@mui/icons-material/Event';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import DescriptionIcon from '@mui/icons-material/Description';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import AppWrap, { MenuItem } from './components/AppWrap';
 import Routes from './components/Routes';
 import { mainTheme } from './styles/MainTheme';
+import { CssBaseline } from '@mui/material';
 
 const menuItems: MenuItem[] = [
   {
